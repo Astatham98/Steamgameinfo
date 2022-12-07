@@ -90,10 +90,10 @@ def get_user_games_info(steam_id, key):
         games_info.append({'Game name': name, 'Review score': percentage, 'genre': genre, 'hours played':round(playtime/60,2)})
         headers = list(games_info[0].keys())
         
-        with open(f'{steam_id}_games.csv', 'w') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames = headers)
-            writer.writeheader()
-            writer.writerows(games_info)
+    with open(f'{steam_id}_games.csv', 'w', encoding="utf-8") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames = headers)
+        writer.writeheader()
+        writer.writerows(games_info)
             
 def remove_and_sort(steam_id):
     df = pd.read_csv(f"{steam_id}_games.csv")
